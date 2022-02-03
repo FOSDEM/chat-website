@@ -132,6 +132,8 @@ def schedule_from_penta(schedule, tracks):
         t.title, t.slug = track_title_and_slug_from_penta(tracks, t.raw_room_name)
 
         # Add to schedule
+        if not t.title:
+            continue
         if t.type == 'stand':
             my_schedule['stands'].append(t)
         elif t.type == 'devroom':
