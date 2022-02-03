@@ -7,11 +7,12 @@ class Room:
     """
     A generic room.
     """
-    def __init__(self, title, room_name, raw_room, days=()):
+    def __init__(self, title, room_name, raw_room, track_slug=None, days=()):
         self.title = title
         self.room_name = room_name
         self.raw_room_name = raw_room
         self.days = [d.lower() for d in days]
+        self.slug = track_slug
 
     @property
     def on_sunday(self):
@@ -67,7 +68,7 @@ def tracks_by_rooms(schedule):
     return tracks_by_room
 
 
-def track_title_from_penta(tracks, room_slug):
+def track_title_and_slug_from_penta(tracks, room_slug):
     """
     Return the track title (e.g. Community) based on the room slug (mcommunity)
     :param tracks:
@@ -75,8 +76,8 @@ def track_title_from_penta(tracks, room_slug):
     :return:
     """
     if room_slug in tracks:
-        return tracks[room_slug]['title']
-    return None
+        return tracks[room_slug]['title'], tracks[room_slug]['slug']
+    return None, None
 
 
 def schedule_from_penta(schedule, tracks):
@@ -128,7 +129,7 @@ def schedule_from_penta(schedule, tracks):
             if len(room['events_by_day']['sunday']) > 0:
                 t.days.append('sunday')
         # Fancy title
-        t.title = track_title_from_penta(tracks, t.raw_room_name)
+        t.title, t.slug = track_title_and_slug_from_penta(tracks, t.raw_room_name)
 
         # Add to schedule
         if t.type == 'stand':

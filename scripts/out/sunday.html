@@ -9,7 +9,7 @@
     }
 
     a {
-        color: #0DBD8B;
+        color: #3479c4;
         text-decoration: none;
         font-weight: 500;
         font-family: helvetica, arial, sans-serif;
@@ -36,17 +36,21 @@
         padding: 10px 32px 10px 32px;
         border: none;
         border-radius: 8px;
-        background-color: #ECFAF6;
+        background-color: #ebf2fa;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        color: #0DBD8B;
+        color: #3479c4;
         font-size: 16px;
         font-weight: 500;
         transition: ease-in 0.5s transform;
         -webkit-transition: ease 0.5s transform;
         -webkit-transform: perspective(1px) translateZ(0);
         transform: perspective(1px) translateZ(0);
+    }
+
+    .btn-main {
+        margin-bottom: 5px;
     }
 
     .button:hover {
@@ -65,6 +69,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 80%;
     }
 
     .welcome {
@@ -133,51 +138,6 @@
         margin-bottom: 10px;
     }
 
-    .room_directory {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .room_directory.left {
-        display: flex;
-        flex-direction: column;
-        margin-right: 10px;
-    }
-
-    .room_directory.right {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-    }
-
-    .room_card {
-        border: 1px solid #E3E8F0;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        margin-bottom: 10px;
-        max-width: 300px;
-        min-width: 300px;
-        transition: ease-in 0.5s transform;
-        -webkit-transition: ease 0.5s transform;
-        -webkit-transform: perspective(1px) translateZ(0);
-        transform: perspective(1px) translateZ(0);
-    }
-
-    .room_card:hover {
-        -webkit-transform: translateY(-4px);
-        transform: translateY(-4px);
-        -webkit-box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-        -moz-box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-        box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-    }
-
     .room_card img {
         display: block;
         margin-right: 10px;
@@ -191,21 +151,16 @@
         margin-right: 50px;
     }
 
-    .title_card {
-        border-radius: 8px;
-        padding: 20px;
-        text-align: left;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        max-width: 300px;
-    }
-
     .title_card h2 {
         margin: 0;
     }
 
     .room_text {
         display: contents;
+    }
+
+    .room_subtext {
+        font-weight: 500;
     }
 
     .btn {
@@ -220,28 +175,32 @@
         flex-wrap: wrap;
     }
 
-    .section_callout {
+    .room_title {
+        margin-bottom: 2rem;
+        background-color: #e9ecef;
+        border-radius: .3rem;
+        text-transform: uppercase;
         width: 100%;
-        margin-top: 60px;
-        margin-bottom: 10px;
-        padding: 60px;
-        background-color: #f9f9f9;
-        text-align: center;
+        padding: 1rem;
     }
 
-    .section_cards {
+    .rooms {
+        margin-top: 5rem;
+        width: 100%;
+    }
+
+    .cards {
         display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        flex-direction: row;
+        margin-top: 40px;
         flex-wrap: wrap;
-        padding: 40px 50px 60px 50px;
+        justify-content: center;
+        width: 100%;
     }
 </style>
 
 <div class="container">
     <div class="welcome">
-
         <a href="https://fosdem.org/2022/" target="_blank">
             <svg width="54" height="54" viewBox="0 0 54 54" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -260,74 +219,93 @@
             </svg>
         </a>
     </div>
-    <div class="welcome_text">
-        <h1>Welcome to FOSDEM!</h1>
-        <p>
-            FOSDEM 2022 is taking place online on February 5th & 6th, you can find the schedule
-            <a href="https://fosdem.org/2022/schedule/" target="_blank" rel="nofollow noopener">on the main
-                website</a>.
-        </p>
-        <p>
-            You can <a href="/#/room/#fosdem2022:fosdem.org">join the conference Space</a> to see the
-            conference and social rooms, talk tracks, stands and BoFs.
-        </p>
+    <div class="welcome welcome_text">
+        <h1>Welcome to FOSDEM 2022!</h1>
+        <p>Welcome to our fully virtual version of the ULB, thanks to the amazing people at Matrix.org! FOSDEM is
+            spread out over a lot of rooms at <i>chat.fosdem.org</i>.</p>
+        <p>The main conference floor is at <a href="/#/room/#fosdem2022:fosdem.org">#fosdem2022:fosdem.org</a>.</p>
+        <p><a href="https://www.fosdem.org/2022/schedule/">You can visit the schedule</a> to find out
+            what's on in each room,
+            click on your favourite room and then sit back and relax.</p>
+        <p>Confused? Unsure how to proceed? <a href="https://www.fosdem.org/2022/practical/online/">Visit
+            the practical information page</a>,
+            <a href="https://www.fosdem.org/2022/faq/">look in the FAQ</a>
+            or <a href="/#/room/#INFODESK:fosdem.org">talk to a
+                human at the Infodesk</a>!</p>
     </div>
-
-    <div class="starting_rooms">
-        <div class="card">
-            <p>The cafe</p>
-            <a href="/#/room/#cafe:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>The food trucks</p>
-            <a href="/#/room/#food-trucks:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>The beer event</p>
-            <a href="/#/room/#beerevent:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>K Building</p>
-            <a href="/#/room/#k-building:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>Cloakroom</p>
-            <a href="/#/room/#cloakroom:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>Infodesk</p>
-            <a href="/#/room/#infodesk:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>BoFs</p>
-            <a href="/#/room/#bofs:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
+    <div class="welcome welcome_text">
+        <a class="button btn-main" href="/#/room/#fosdem2022:fosdem.org">FOSDEM 2022 Conference Space</a>
+        <a class="button btn-main" href="#main_tracks">To the main tracks.</a>
+        <a class="button btn-main" href="#devrooms">To the devrooms.</a>
+        <a class="button btn-main" href="#stands">To the stands.</a>
     </div>
-
-    <div class="room_directory">
-        <div class="room_directory left ">
-            <div class="title_card">
-                <h2>Main Tracks</h2>
+    <!-- Social -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="devrooms"></a>
+            <h2>FOSDEM Social</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <p>The cafe</p>
+                <a href="/#/room/#cafe:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
             </div>
+            <div class="card">
+                <p>The food trucks</p>
+                <a href="/#/room/#food-trucks:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>The beer event</p>
+                <a href="/#/room/#beerevent:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>K Building</p>
+                <a href="/#/room/#k-building:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>Cloakroom</p>
+                <a href="/#/room/#cloakroom:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>Infodesk</p>
+                <a href="/#/room/#infodesk:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>BoFs</p>
+                <a href="/#/room/#bofs:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Main tracks -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="main_tracks"></a>
+            <h2>Main tracks</h2>
+        </div>
+        <div class="cards">
             
-                <div class="room_card">
-                    <div class="room_text" id="mainTrack">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Miscellaneous</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/miscellaneous/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#misc:fosdem.org">
                         <div class="button">Join</div>
@@ -335,21 +313,14 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="mainTrack">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Security</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#security:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="mainTrack">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>FOSDEM</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/fosdem/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#fosdem-keynotes:fosdem.org">
                         <div class="button">Join</div>
@@ -357,224 +328,69 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="mainTrack">
+        </div>
+    </div>
+    <!-- Devrooms -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="devrooms"></a>
+            <h2>Devrooms</h2>
+        </div>
+        <div class="cards">
+            
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Community</p>
+                        <p>Software Defined Networking devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#community:fosdem.org">
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/software_defined_networking/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#sdn-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-
-            <div class="title_card">
-                <h2>Dev Rooms</h2>
-            </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>MySQL devroom</p>
+                        <p>Open Source Computer Aided Modeling and Design devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#mysql-devroom:fosdem.org">
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/open_source_computer_aided_modeling_and_design/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#cad-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Software Defined Storage devroom</p>
+                        <p>Legal and Policy Issues devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#sds-devroom:fosdem.org">
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/legal_and_policy_issues/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#legal-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Python devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#python-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Libre-Open VLSI and FPGA devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#open-hardware-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Continuous Integration and Continuous Deployment devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#cicd-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Graphics devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#graphics-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Declarative and Minimalistic Computing devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#minimalistic-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Software composition and dependency management devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#dependency-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>HPC, Big Data, and Data Science devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#hpc-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>FOSS on Mobile Devices devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#mobile-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Friends of OpenJDK devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#openjdk-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Free Software Radio devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#radio-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Distributions devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#distributions-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Kotlin devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#kotlin-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Matrix.org Foundation & Community devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#matrix-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Embedded, Mobile and Automotive devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#embedded-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Containers devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#containers-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Web3 Infrastructure devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#web3-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Emulator Development devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/emulator_development/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#emulator-devroom:fosdem.org">
                         <div class="button">Join</div>
@@ -582,21 +398,299 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>PostgreSQL devroom</p>
+                        <p>Python devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#postgresql-devroom:fosdem.org">
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/python/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#python-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Continuous Integration and Continuous Deployment devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/continuous_integration_and_continuous_deployment/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#cicd-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Community devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/community_devroom/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#community-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Dependency Management devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/dependency_management/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#dependency-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>HPC, Big Data and Data Science devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/hpc_big_data_and_data_science/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#hpc-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Software Composition devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/software_composition/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#composition-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Friends of OpenJDK devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/friends_of_openjdk/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#openjdk-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Tool The Docs devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/tool_the_docs/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#docs-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Free Software Radio devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/free_software_radio/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#radio-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Open Source Design devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/open_source_design/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#design-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Web Performance devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/web_performance/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#web.performance-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Kotlin devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/kotlin/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#kotlin-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Perl and Raku Programming devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/perl_and_raku_programming/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#perl-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Retrocomputing devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/retrocomputing/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#retro-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Embedded, Mobile and Automotive devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/embedded_mobile_and_automotive/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#embedded-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Containers devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/containers/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#containers-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Open Source Firmware, BMC and Bootloader devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/open_source_firmware_bmc_and_bootloader/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#firmware-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Beyond Blockchain - Distributed Web devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/beyond_blockchain_distributed_web/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#blockchain-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>MySQL devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/mysql/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#mysql-devroom:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Monitoring and Observability devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/monitoring_and_observability/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#monitoring-devroom:fosdem.org">
                         <div class="button">Join</div>
@@ -604,10 +698,14 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>LibreOffice Technology devroom</p>
+                        <p>LibreOffice devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/libreoffice/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#libreoffice-devroom:fosdem.org">
                         <div class="button">Join</div>
@@ -615,32 +713,29 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>JavaScript devroom</p>
+                        <p>PostgreSQL devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#javascript-devroom:fosdem.org">
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/postgresql/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#postgresql-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Valgrind devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#valgrind-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Geospatial devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/geospatial/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#geospatial-devroom:fosdem.org">
                         <div class="button">Join</div>
@@ -648,10 +743,14 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>BSD devroom</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/bsd/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#bsd-devroom:fosdem.org">
                         <div class="button">Join</div>
@@ -659,50 +758,40 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Ada devroom</p>
+                        <p>Declarative and Minimalistic Computing devroom</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#ada-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/2022/schedule/track/declarative_and_minimalistic_computing/">Schedule</a>
+                        </p>
                     </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Public Code devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#public-code-devroom:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Network devroom</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#network-devroom:fosdem.org">
+                    <div class="btn"><a href="/#/room/#declarative.minimalistic-devroom:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
         </div>
-
-        <div class="room_directory right">
-            <div class="title_card">
-                <h2>Stands</h2>
-            </div>
+    </div>
+    <!-- Stands -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="stands"></a>
+            <h2>Stands</h2>
+        </div>
+        <div class="cards">
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>RefPerSys stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/refpersys_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#refpersys-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -710,21 +799,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>ONLYOFFICE stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#onlyoffice-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>XWiki & CryptPad stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/xwiki_and_cryptpad_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#xwiki-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -732,10 +815,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>PostgreSQL stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/postgresql_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#postgresql-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -743,21 +831,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>illumos stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#illumos-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Mautic stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/mautic_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#mautic-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -765,10 +847,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>GNOME stand</p>
+                        <p>The GNOME Foundation stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/the_gnome_foundation_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#gnome-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -776,10 +863,31 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>School of AI Port Haarcourt stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/school_of_ai_port_haarcourt_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#haarcourt-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>XCP-ng stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/xcp_ng_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#xcpng-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -787,10 +895,31 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>ONLYOFFICE stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/onlyoffice_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#onlyoffice-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Pulp stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/pulp_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#pulp-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -798,10 +927,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>openwifi stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/openwifi_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openwifi-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -809,10 +943,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>OpenMandriva stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/openmandriva_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openmandriva-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -820,10 +959,31 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>YottaDB stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/yottadb_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#yottadb-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>The Apache Software Foundation stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/the_apache_software_foundation_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#apache-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -831,10 +991,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Pharo stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/pharo_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#pharo-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -842,10 +1007,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>FreeBSD Project stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/freebsd_project_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#freebsd-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -853,10 +1023,15 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>OW2 Open Source Community stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/ow2_open_source_community_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#ow2-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -864,285 +1039,63 @@
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>openSUSE stand</p>
+                        <p>Sesame Discovery stand</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#opensuse-stand:fosdem.org">
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/sesame_discovery_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#sesame-stand:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Foreman stand</p>
+                        <p>Tracim stand</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#foreman-stand:fosdem.org">
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/tracim_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#tracim-stand:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Oniro Project stand</p>
+                        <p>Jenkins stand</p>
                     </div>
-                    <div class="btn"><a href="/#/room/#oniro-stand:fosdem.org">
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/jenkins_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#jenkins-stand:fosdem.org">
                         <div class="button">Join</div>
                     </a>
                     </div>
                 </div>
             
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Box86 stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#box86-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>ReactOS stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#reactos-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>KDE Community stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#kde-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>LibreOffice stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#libreoffice-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>OpenUK stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#openuk-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>FOSSASIA stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#fossasia-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>OpenTAP stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#opentap-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>LibreSOC Project stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#libresoc-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Haiku stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#haiku-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>CiviCRM stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#civicrm-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Matrix stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#matrix-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Ubuntu stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#ubuntu-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Fedora Project stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#fedora-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Free Software Foundation Europe stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#fsfe-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Eclipse Foundation stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#eclipse-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>ntop stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#ntop-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>schul-frei stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#schulfrei-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Checkmk stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#checkmk-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Kiwi TCMS stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#kiwi-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Debian stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#debian-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>Google Summer of Code stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#gsoc-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
-                        <!--<img src="https://via.placeholder.com/32">-->
-                        <p>MariaDB Foundation stand</p>
-                    </div>
-                    <div class="btn"><a href="/#/room/#mariadb-stand:fosdem.org">
-                        <div class="button">Join</div>
-                    </a>
-                    </div>
-                </div>
-            
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>Nextcloud Hub stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/nextcloud_hub_stand/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#nextcloud-stand:fosdem.org">
                         <div class="button">Join</div>
@@ -1150,23 +1103,502 @@
                     </div>
                 </div>
             
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>MIT App Inventor stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/mit_app_inventor_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#appinventor-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>GitLab stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/gitlab_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#gitlab-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Box86 stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/box86_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#box86-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>ReactOS stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/reactos_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#reactos-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Coderdojo Belgium stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/coderdojo_belgium_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#coderdojo-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>KDE Community stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/kde_community_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#kde-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>LibreOffice stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/libreoffice_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#Libreoffice-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>OpenUK stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/openuk_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#openuk-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>FOSSASIA stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/fossasia_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#fossasia-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>OpenTAP stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/opentap_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#opentap-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>The LibreSOC Project stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/the_libresoc_project_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#libresoc-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Haiku stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/haiku_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#haiku-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>CiviCRM stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/civicrm_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#civicrm-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Matrix stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/matrix_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#matrix-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Thola and NESi stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/thola_and_nesi_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#thola-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>The Fedora Project stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/the_fedora_project_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#fedora-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Foreman stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/foreman_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#foreman-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Free Software Foundation Europe stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/free_software_foundation_europe_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#fsfe-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>None</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/None/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#radio-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Unikraft stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/unikraft_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#unikraft-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>The Eclipse Foundation stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/the_eclipse_foundation_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#eclipse-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>OpenEmbedded stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/openembedded_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#openembedded-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Kopano stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/kopano_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#kopano-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>ntop stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/ntop_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#ntop-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>schul-frei stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/schul_frei_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#schulfrei-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Checkmk stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/checkmk_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#checkmk-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Kiwi TCMS stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/kiwi_tcms_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#kiwi-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Debian stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/debian_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#debian-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>OpenHarmony Project stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/openharmony_project_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#openharmony-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>Google Summer of Code stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/google_summer_of_code_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#gsoc-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <div class="room_text">
+                        <!--<img src="https://via.placeholder.com/32">-->
+                        <p>MariaDB Foundation stand</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/2022/schedule/track/mariadb_foundation_stand/">Schedule</a>
+                        </p>
+                    </div>
+                    <div class="btn"><a href="/#/room/#mariadb-stand:fosdem.org">
+                        <div class="button">Join</div>
+                    </a>
+                    </div>
+                </div>
+            
         </div>
     </div>
-
-
-    <div class="section">
-        <a href="
-        https://fosdem.org/2022/live/" target="_blank">
-            <div class="button schedule">Visit the conference floor.</div>
-        </a>
-    </div>
-    <div class="section">
-        <a href="https://fosdem.org/2022/schedule/roomtracks/" target="_blank">
-            <div class="button schedule">See the full event
-                schedule
-            </div>
-        </a>
-    </div>
-
-    <div class="section">&nbsp;</div>
 </div>

@@ -19,7 +19,7 @@
     }
 
     a {
-        color: #0DBD8B;
+        color: #3479c4;
         text-decoration: none;
         font-weight: 500;
         font-family: helvetica, arial, sans-serif;
@@ -46,17 +46,21 @@
         padding: 10px 32px 10px 32px;
         border: none;
         border-radius: 8px;
-        background-color: #ECFAF6;
+        background-color: #ebf2fa;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        color: #0DBD8B;
+        color: #3479c4;
         font-size: 16px;
         font-weight: 500;
         transition: ease-in 0.5s transform;
         -webkit-transition: ease 0.5s transform;
         -webkit-transform: perspective(1px) translateZ(0);
         transform: perspective(1px) translateZ(0);
+    }
+
+    .btn-main {
+        margin-bottom: 5px;
     }
 
     .button:hover {
@@ -75,6 +79,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 80%;
     }
 
     .welcome {
@@ -143,51 +148,6 @@
         margin-bottom: 10px;
     }
 
-    .room_directory {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .room_directory.left {
-        display: flex;
-        flex-direction: column;
-        margin-right: 10px;
-    }
-
-    .room_directory.right {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-    }
-
-    .room_card {
-        border: 1px solid #E3E8F0;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        margin-bottom: 10px;
-        max-width: 300px;
-        min-width: 300px;
-        transition: ease-in 0.5s transform;
-        -webkit-transition: ease 0.5s transform;
-        -webkit-transform: perspective(1px) translateZ(0);
-        transform: perspective(1px) translateZ(0);
-    }
-
-    .room_card:hover {
-        -webkit-transform: translateY(-4px);
-        transform: translateY(-4px);
-        -webkit-box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-        -moz-box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-        box-shadow: 10px 10px 14px 0px rgba(0, 0, 0, 0.03);
-    }
-
     .room_card img {
         display: block;
         margin-right: 10px;
@@ -201,21 +161,16 @@
         margin-right: 50px;
     }
 
-    .title_card {
-        border-radius: 8px;
-        padding: 20px;
-        text-align: left;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        max-width: 300px;
-    }
-
     .title_card h2 {
         margin: 0;
     }
 
     .room_text {
         display: contents;
+    }
+
+    .room_subtext {
+        font-weight: 500;
     }
 
     .btn {
@@ -230,28 +185,32 @@
         flex-wrap: wrap;
     }
 
-    .section_callout {
+    .room_title {
+        margin-bottom: 2rem;
+        background-color: #e9ecef;
+        border-radius: .3rem;
+        text-transform: uppercase;
         width: 100%;
-        margin-top: 60px;
-        margin-bottom: 10px;
-        padding: 60px;
-        background-color: #f9f9f9;
-        text-align: center;
+        padding: 1rem;
     }
 
-    .section_cards {
+    .rooms {
+        margin-top: 5rem;
+        width: 100%;
+    }
+
+    .cards {
         display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        flex-direction: row;
+        margin-top: 40px;
         flex-wrap: wrap;
-        padding: 40px 50px 60px 50px;
+        justify-content: center;
+        width: 100%;
     }
 </style>
 
 <div class="container">
     <div class="welcome">
-
         <a href="https://fosdem.org/{{ fosdem_year }}/" target="_blank">
             <svg width="54" height="54" viewBox="0 0 54 54" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -270,74 +229,93 @@
             </svg>
         </a>
     </div>
-    <div class="welcome_text">
-        <h1>Welcome to FOSDEM!</h1>
-        <p>
-            FOSDEM {{ fosdem_year }} is taking place online on {{ fosdem_dates }}, you can find the schedule
-            <a href="https://fosdem.org/{{ fosdem_year }}/schedule/" target="_blank" rel="nofollow noopener">on the main
-                website</a>.
-        </p>
-        <p>
-            You can <a href="/#/room/#fosdem{{ fosdem_year }}:fosdem.org">join the conference Space</a> to see the
-            conference and social rooms, talk tracks, stands and BoFs.
-        </p>
+    <div class="welcome welcome_text">
+        <h1>Welcome to FOSDEM {{ fosdem_year }}!</h1>
+        <p>Welcome to our fully virtual version of the ULB, thanks to the amazing people at Matrix.org! FOSDEM is
+            spread out over a lot of rooms at <i>chat.fosdem.org</i>.</p>
+        <p>The main conference floor is at <a href="/#/room/#fosdem2022:fosdem.org">#fosdem2022:fosdem.org</a>.</p>
+        <p><a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/">You can visit the schedule</a> to find out
+            what's on in each room,
+            click on your favourite room and then sit back and relax.</p>
+        <p>Confused? Unsure how to proceed? <a href="https://www.fosdem.org/{{ fosdem_year }}/practical/online/">Visit
+            the practical information page</a>,
+            <a href="https://www.fosdem.org/{{ fosdem_year }}/faq/">look in the FAQ</a>
+            or <a href="/#/room/#INFODESK:fosdem.org">talk to a
+                human at the Infodesk</a>!</p>
     </div>
-
-    <div class="starting_rooms">
-        <div class="card">
-            <p>The cafe</p>
-            <a href="/#/room/#cafe:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>The food trucks</p>
-            <a href="/#/room/#food-trucks:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>The beer event</p>
-            <a href="/#/room/#beerevent:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>K Building</p>
-            <a href="/#/room/#k-building:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>Cloakroom</p>
-            <a href="/#/room/#cloakroom:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>Infodesk</p>
-            <a href="/#/room/#infodesk:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
-        <div class="card">
-            <p>BoFs</p>
-            <a href="/#/room/#bofs:fosdem.org">
-                <div class="button">Join</div>
-            </a>
-        </div>
+    <div class="welcome welcome_text">
+        <a class="button btn-main" href="/#/room/#fosdem2022:fosdem.org">FOSDEM 2022 Conference Space</a>
+        <a class="button btn-main" href="#main_tracks">To the main tracks.</a>
+        <a class="button btn-main" href="#devrooms">To the devrooms.</a>
+        <a class="button btn-main" href="#stands">To the stands.</a>
     </div>
-
-    <div class="room_directory">
-        <div class="room_directory left ">
-            <div class="title_card">
-                <h2>Main Tracks</h2>
+    <!-- Social -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="devrooms"></a>
+            <h2>FOSDEM Social</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <p>The cafe</p>
+                <a href="/#/room/#cafe:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
             </div>
+            <div class="card">
+                <p>The food trucks</p>
+                <a href="/#/room/#food-trucks:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>The beer event</p>
+                <a href="/#/room/#beerevent:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>K Building</p>
+                <a href="/#/room/#k-building:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>Cloakroom</p>
+                <a href="/#/room/#cloakroom:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>Infodesk</p>
+                <a href="/#/room/#infodesk:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+            <div class="card">
+                <p>BoFs</p>
+                <a href="/#/room/#bofs:fosdem.org">
+                    <div class="button">Join</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Main tracks -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="main_tracks"></a>
+            <h2>Main tracks</h2>
+        </div>
+        <div class="cards">
             {% for main_track in main_tracks %}
-                <div class="room_card">
-                    <div class="room_text" id="mainTrack">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>{{ main_track.title }}</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ main_track.slug }}/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ main_track.room_name }}:fosdem.org">
                         <div class="button">Join</div>
@@ -345,15 +323,24 @@
                     </div>
                 </div>
             {% endfor %}
-
-            <div class="title_card">
-                <h2>Dev Rooms</h2>
-            </div>
+        </div>
+    </div>
+    <!-- Devrooms -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="devrooms"></a>
+            <h2>Devrooms</h2>
+        </div>
+        <div class="cards">
             {% for devroom in devrooms %}
-                <div class="room_card">
-                    <div class="room_text" id="devRoom">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>{{ devroom.title }}</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p><a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ devroom.slug }}/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ devroom.room_name }}:fosdem.org">
                         <div class="button">Join</div>
@@ -362,16 +349,24 @@
                 </div>
             {% endfor %}
         </div>
-
-        <div class="room_directory right">
-            <div class="title_card">
-                <h2>Stands</h2>
-            </div>
+    </div>
+    <!-- Stands -->
+    <div class="rooms">
+        <div class="room_title">
+            <a id="stands"></a>
+            <h2>Stands</h2>
+        </div>
+        <div class="cards">
             {% for stand in stands %}
-                <div class="room_card">
-                    <div class="room_text" id="stand">
+                <div class="card">
+                    <div class="room_text">
                         <!--<img src="https://via.placeholder.com/32">-->
                         <p>{{ stand.title }}</p>
+                    </div>
+                    <div class="room_subtext">
+                        <p>
+                            <a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ stand.slug }}/">Schedule</a>
+                        </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ stand.room_name }}:fosdem.org">
                         <div class="button">Join</div>
@@ -381,21 +376,4 @@
             {% endfor %}
         </div>
     </div>
-
-
-    <div class="section">
-        <a href="
-        https://fosdem.org/2022/live/" target="_blank">
-            <div class="button schedule">Visit the conference floor.</div>
-        </a>
-    </div>
-    <div class="section">
-        <a href="https://fosdem.org/2022/schedule/roomtracks/" target="_blank">
-            <div class="button schedule">See the full event
-                schedule
-            </div>
-        </a>
-    </div>
-
-    <div class="section">&nbsp;</div>
 </div>
