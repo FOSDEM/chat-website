@@ -36,7 +36,7 @@
         padding: 10px 32px 10px 32px;
         border: none;
         border-radius: 8px;
-        background-color: #ebf2fa;
+        width: inherit;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -177,7 +177,6 @@
 
     .room_title {
         margin-bottom: 2rem;
-        background-color: #e9ecef;
         border-radius: .3rem;
         text-transform: uppercase;
         width: 100%;
@@ -196,6 +195,16 @@
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
+    }
+
+    .welcome > .mx_AccessibleButton {
+        color: #fff;
+        font-size: 1.25em;
+        margin-bottom: 10px;
+        padding: 0.5em 1em;
+        background-color: #ab1b93;
+        border: none;
+        vertical-align: middle;
     }
 </style>
 
@@ -234,14 +243,14 @@
                 human at the Infodesk</a>!</p>
     </div>
     <div class="welcome welcome_text">
-        <a class="button btn-main" href="/#/room/#fosdem2022:fosdem.org">FOSDEM 2022 Conference Space</a>
-        <a class="button btn-main" href="#main_tracks">To the main tracks</a>
-        <a class="button btn-main" href="#devrooms">To the devrooms</a>
-        <a class="button btn-main" href="#stands">To the stands</a>
+        <a class="mx_AccessibleButton mx_AccessibleButton_hasKind mx_AccessibleButton_kind_primary" href="/#/room/#fosdem2022:fosdem.org">FOSDEM 2022 Conference Space</a>
+        <a class="dark-panel button btn-main" href="#main_tracks">To the main tracks</a>
+        <a class="dark-panel button btn-main" href="#devrooms">To the devrooms</a>
+        <a class="dark-panel button btn-main" href="#stands">To the stands</a>
     </div>
     <!-- Social -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="devrooms"></a>
             <h2>FOSDEM Social</h2>
         </div>
@@ -249,50 +258,50 @@
             <div class="card">
                 <p>The cafe</p>
                 <a href="/#/room/#cafe:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>The food trucks</p>
                 <a href="/#/room/#food-trucks:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>The beer event</p>
                 <a href="/#/room/#beerevent:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>K Building</p>
                 <a href="/#/room/#k-building:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>Cloakroom</p>
                 <a href="/#/room/#cloakroom:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>Infodesk</p>
                 <a href="/#/room/#infodesk:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>BoFs</p>
                 <a href="/#/room/#bofs:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
         </div>
     </div>
     <!-- Main tracks -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="main_tracks"></a>
             <h2>Main tracks</h2>
         </div>
@@ -308,7 +317,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#misc:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -323,7 +332,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#fosdem-keynotes:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -332,7 +341,7 @@
     </div>
     <!-- Devrooms -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="devrooms"></a>
             <h2>Devrooms</h2>
         </div>
@@ -348,7 +357,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#sdn-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -363,7 +372,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#cad-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -378,7 +387,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#legal-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -393,7 +402,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#emulator-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -408,7 +417,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#python-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -423,7 +432,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#cicd-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -438,7 +447,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#community-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -453,7 +462,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#dependency-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -468,7 +477,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#hpc-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -483,7 +492,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#composition-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -498,7 +507,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openjdk-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -513,7 +522,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#docs-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -528,7 +537,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#radio-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -543,7 +552,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#design-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -558,7 +567,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#web.performance-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -573,7 +582,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#kotlin-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -588,7 +597,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#perl-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -603,7 +612,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#retro-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -618,7 +627,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#embedded-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -633,7 +642,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#containers-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -648,7 +657,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#firmware-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -663,7 +672,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#blockchain-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -678,7 +687,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#mysql-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -693,7 +702,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#monitoring-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -708,7 +717,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#libreoffice-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -723,7 +732,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#postgresql-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -738,7 +747,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#geospatial-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -753,7 +762,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#bsd-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -768,7 +777,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#declarative.minimalistic-devroom:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -777,7 +786,7 @@
     </div>
     <!-- Stands -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="stands"></a>
             <h2>Stands</h2>
         </div>
@@ -794,7 +803,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#refpersys-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -810,7 +819,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#xwiki-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -826,7 +835,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#postgresql-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -842,7 +851,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#mautic-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -858,7 +867,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#gnome-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -874,7 +883,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#haarcourt-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -890,7 +899,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#xcpng-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -906,7 +915,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#onlyoffice-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -922,7 +931,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#pulp-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -938,7 +947,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openwifi-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -954,7 +963,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openmandriva-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -970,7 +979,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#yottadb-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -986,7 +995,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#apache-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1002,7 +1011,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#pharo-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1018,7 +1027,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#freebsd-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1034,7 +1043,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#ow2-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1050,7 +1059,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#sesame-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1066,7 +1075,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#tracim-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1082,7 +1091,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#jenkins-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1098,7 +1107,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#nextcloud-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1114,7 +1123,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#appinventor-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1130,7 +1139,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#gitlab-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1146,7 +1155,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#box86-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1162,7 +1171,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#reactos-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1178,7 +1187,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#coderdojo-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1194,7 +1203,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#kde-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1210,7 +1219,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#Libreoffice-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1226,7 +1235,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openuk-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1242,7 +1251,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#fossasia-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1258,7 +1267,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#opentap-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1274,7 +1283,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#libresoc-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1290,7 +1299,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#haiku-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1306,7 +1315,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#civicrm-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1322,7 +1331,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#matrix-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1338,7 +1347,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#thola-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1354,7 +1363,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#fedora-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1370,7 +1379,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#foreman-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1386,7 +1395,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#fsfe-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1402,7 +1411,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#unikraft-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1418,7 +1427,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#eclipse-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1434,7 +1443,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openembedded-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1450,7 +1459,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#kopano-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1466,7 +1475,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#ntop-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1482,7 +1491,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#schulfrei-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1498,7 +1507,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#checkmk-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1514,7 +1523,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#kiwi-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1530,7 +1539,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#debian-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1546,7 +1555,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#openharmony-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1562,7 +1571,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#gsoc-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -1578,7 +1587,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#mariadb-stand:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
