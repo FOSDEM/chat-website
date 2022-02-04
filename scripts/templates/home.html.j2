@@ -46,7 +46,7 @@
         padding: 10px 32px 10px 32px;
         border: none;
         border-radius: 8px;
-        background-color: #ebf2fa;
+        width: inherit;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -187,7 +187,6 @@
 
     .room_title {
         margin-bottom: 2rem;
-        background-color: #e9ecef;
         border-radius: .3rem;
         text-transform: uppercase;
         width: 100%;
@@ -245,13 +244,13 @@
     </div>
     <div class="welcome welcome_text">
         <a class="button btn-main" href="/#/room/#fosdem2022:fosdem.org">FOSDEM 2022 Conference Space</a>
-        <a class="button btn-main" href="#main_tracks">To the main tracks</a>
-        <a class="button btn-main" href="#devrooms">To the devrooms</a>
-        <a class="button btn-main" href="#stands">To the stands</a>
+        <a class="dark-panel button btn-main" href="#main_tracks">To the main tracks</a>
+        <a class="dark-panel button btn-main" href="#devrooms">To the devrooms</a>
+        <a class="dark-panel button btn-main" href="#stands">To the stands</a>
     </div>
     <!-- Social -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="devrooms"></a>
             <h2>FOSDEM Social</h2>
         </div>
@@ -259,50 +258,50 @@
             <div class="card">
                 <p>The cafe</p>
                 <a href="/#/room/#cafe:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>The food trucks</p>
                 <a href="/#/room/#food-trucks:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>The beer event</p>
                 <a href="/#/room/#beerevent:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>K Building</p>
                 <a href="/#/room/#k-building:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>Cloakroom</p>
                 <a href="/#/room/#cloakroom:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>Infodesk</p>
                 <a href="/#/room/#infodesk:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
             <div class="card">
                 <p>BoFs</p>
                 <a href="/#/room/#bofs:fosdem.org">
-                    <div class="button">Join</div>
+                    <div class="dark-panel button">Join</div>
                 </a>
             </div>
         </div>
     </div>
     <!-- Main tracks -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="main_tracks"></a>
             <h2>Main tracks</h2>
         </div>
@@ -318,7 +317,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ main_track.room_name }}:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -327,7 +326,7 @@
     </div>
     <!-- Devrooms -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="devrooms"></a>
             <h2>Devrooms</h2>
         </div>
@@ -343,7 +342,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ devroom.room_name }}:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
@@ -352,7 +351,7 @@
     </div>
     <!-- Stands -->
     <div class="rooms">
-        <div class="room_title">
+        <div class="dark-panel room_title">
             <a id="stands"></a>
             <h2>Stands</h2>
         </div>
@@ -369,7 +368,7 @@
                         </p>
                     </div>
                     <div class="btn"><a href="/#/room/#{{ stand.room_name }}:fosdem.org">
-                        <div class="button">Join</div>
+                        <div class="dark-panel button">Join</div>
                     </a>
                     </div>
                 </div>
