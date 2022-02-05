@@ -96,6 +96,8 @@ def schedule_from_penta(schedule, tracks):
 
     # Rooms are in ... .rooms
     for room_name, room in schedule['rooms'].items():
+        if room['slug'].lower() == 'test':
+            continue
         if room_name[0].lower() == 'k' or room_name[0].lower() == 'm':
             # Main track
             t = MainTrack(
