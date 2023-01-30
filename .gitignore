@@ -2,3 +2,4 @@ scripts/__pycache__
 .idea
 home-saturday.html
 *.pyc
+scripts/env/
