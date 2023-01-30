@@ -146,7 +146,7 @@ def schedule_from_penta(schedule, tracks):
     return my_schedule
 
 
-def page_from_my_schedule(my_schedule, year='2022', dates='February 5th & 6th'):
+def page_from_my_schedule(my_schedule, year='2023', dates='February 4th & 5th'):
     env = Environment(
         loader=PackageLoader('home_from_penta'),
         autoescape=select_autoescape()
