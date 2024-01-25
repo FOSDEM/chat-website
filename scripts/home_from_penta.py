@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-from yaml import safe_load
+from datetime import date
 from jinja2 import Environment, PackageLoader, select_autoescape
-
+import requests
+import xml.etree.ElementTree as ET
 
 class Room:
     """
@@ -48,9 +49,65 @@ class Stand(Room):
     type = 'stand'
 
 
+def convert_to_human_date(d):
+    if d.day == 1 or d.day == 21 or d.day == 31:
+        return f"{str(d.day)}st"
+    elif d.day == 2 or d.day == 22:
+        return f"{str(d.day)}nd"
+    elif d.day == 3:
+        return f"{str(d.day)}rd"
+    else:
+        return f"{str(d.day)}th"
+
 def load_from_penta():
-    with open('pentabarf.yaml', 'r') as fh:
-        schedule = safe_load(fh)
+    req = requests.get('https://fosdem.org/2024/schedule/xml')
+    if req.status_code != 200:
+        raise "Status code was not 200"
+    xml = req.text
+    root = ET.fromstring(xml)
+    conference = root.find("conference")
+    days = root.findall("day")
+
+
+    schedule_tracks = {}
+    schedule_rooms = {}
+    for track in root.find("tracks").findall("track"):
+        schedule_tracks[track.text] = {
+            "rooms": set()
+        }
+
+    for day in days:
+        day_name = date.fromisoformat(day.get("date")).strftime("%A").lower()
+        for room in day.findall("room"):
+            slug = room.get("slug")
+            room_name = room.get("name")
+            schedule_room = schedule_rooms.get(slug)
+            if schedule_room is None:
+                schedule_room = {
+                    "slug": slug,
+                    "title": room_name,
+                    "conference_room": room_name,
+                    "events_by_day": {
+
+                    }
+                }
+                schedule_rooms[slug] = schedule_room
+            for event in room.findall("event"):
+                schedule_room["events_by_day"][day_name] = True
+                schedule_tracks[event.find("track").text]["rooms"].add(room.get("name"))
+        
+    start = date.fromisoformat(conference.find("start").text)
+    end = date.fromisoformat(conference.find("end").text)
+
+    dates = start.strftime("%B ") + convert_to_human_date(start) + " & " + convert_to_human_date(end)
+
+    schedule = {
+        "tracks": schedule_tracks,
+        "rooms": schedule_rooms,
+        "year": start.strftime("%Y"),
+        "dates": dates
+    }
+    print (schedule)
     return schedule
 
 
@@ -126,9 +183,9 @@ def schedule_from_penta(schedule, tracks):
 
         # Stands are always on the schedule
         if t.type != 'stands':
-            if len(room['events_by_day']['saturday']) > 0:
+            if room['events_by_day']['saturday']:
                 t.days.append('saturday')
-            if len(room['events_by_day']['sunday']) > 0:
+            if room['events_by_day']['sunday']:
                 t.days.append('sunday')
         # Fancy title
         t.title, t.slug = track_title_and_slug_from_penta(tracks, t.raw_room_name)
@@ -146,7 +203,7 @@ def schedule_from_penta(schedule, tracks):
     return my_schedule
 
 
-def page_from_my_schedule(my_schedule, year='2023', dates='February 4th & 5th'):
+def page_from_my_schedule(my_schedule, year, dates):
     env = Environment(
         loader=PackageLoader('home_from_penta'),
         autoescape=select_autoescape()
@@ -184,7 +241,7 @@ def main():
 
     fosdem_schedule = schedule_from_penta(schedule, tracks)
 
-    return page_from_my_schedule(fosdem_schedule)
+    return page_from_my_schedule(fosdem_schedule, schedule["year"], schedule["dates"])
 
 
 if __name__ == '__main__':
