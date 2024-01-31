@@ -2,7 +2,7 @@ import requests
 import json
 from html.parser import HTMLParser
 
-class FOSDEMStandParser(HTMLParser):
+class FOSDEMTrackParser(HTMLParser):
     track_list = {}
     current_href = None
     def handle_starttag(self, tag, attrs):
@@ -21,21 +21,16 @@ class FOSDEMStandParser(HTMLParser):
 
 URL = "https://fosdem.org/2024/schedule/"
 
-def main():
+def get_track_list():
     """
     From the schedule page on fosdem.org, generate a list of track urls for each
     track.
+    :return: A dictionary of track names to track urls.
     """
     req = requests.get(URL)
     if req.status_code != 200:
         raise "Status code was not 200"
 
-    parser = FOSDEMStandParser()
+    parser = FOSDEMTrackParser()
     parser.feed(req.text)
-    print(parser.track_list)
-    
-    with open('track_list.json', 'w') as f:
-        f.write(json.dumps(parser.track_list))
-
-if __name__ == '__main__':
-    exit(main())
+    return parser.track_list
