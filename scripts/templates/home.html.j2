@@ -256,7 +256,9 @@
         <a class="mx_AccessibleButton mx_AccessibleButton_hasKind mx_AccessibleButton_kind_primary" href="/#/room/#fosdem{{ fosdem_year }}:fosdem.org">FOSDEM {{ fosdem_year }} Conference Space</a>
         <a class="dark-panel button btn-main" href="#main_tracks">To the main tracks</a>
         <a class="dark-panel button btn-main" href="#devrooms">To the devrooms</a>
+    {% if (stands | length) > 0 %}
         <a class="dark-panel button btn-main" href="#stands">To the stands</a>
+    {% endif %}
     </div>
     <!-- Social -->
     <div class="rooms">
@@ -323,10 +325,10 @@
                         <p>{{ main_track.title }}</p>
                     </div>
                     <div class="room_subtext">
-                        <p><a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ main_track.slug }}/" target="_blank" rel="noopener noreferrer">Schedule</a>
+                        <p><a href="https://www.fosdem.org{{ main_track.url }}" target="_blank" rel="noopener noreferrer">Schedule</a>
                         </p>
                     </div>
-                    <div class="btn"><a href="/#/room/#{{ main_track.room_name }}:fosdem.org">
+                    <div class="btn"><a href="/#/room/#{{ main_track.slug }}:fosdem.org">
                         <div class="dark-panel button">Join</div>
                     </a>
                     </div>
@@ -348,10 +350,10 @@
                         <p>{{ devroom.title }}</p>
                     </div>
                     <div class="room_subtext">
-                        <p><a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ devroom.slug }}/" target="_blank" rel="noopener noreferrer">Schedule</a>
+                        <p><a href="https://www.fosdem.org{{ devroom.url }}" target="_blank" rel="noopener noreferrer">Schedule</a>
                         </p>
                     </div>
-                    <div class="btn"><a href="/#/room/#{{ devroom.room_name }}:fosdem.org">
+                    <div class="btn"><a href="/#/room/#{{ devroom.slug }}:fosdem.org">
                         <div class="dark-panel button">Join</div>
                     </a>
                     </div>
@@ -359,6 +361,7 @@
             {% endfor %}
         </div>
     </div>
+    {% if (stands | length) > 0 %}
     <!-- Stands -->
     <div class="rooms">
         <div class="dark-panel room_title">
@@ -374,10 +377,10 @@
                     </div>
                     <div class="room_subtext">
                         <p>
-                            <a href="https://www.fosdem.org/{{ fosdem_year }}/schedule/track/{{ stand.slug }}/" target="_blank" rel="noopener noreferrer">Schedule</a>
+                            <a href="https://www.fosdem.org{{ stand.url }}" target="_blank" rel="noopener noreferrer">Schedule</a>
                         </p>
                     </div>
-                    <div class="btn"><a href="/#/room/#{{ stand.room_name }}:fosdem.org">
+                    <div class="btn"><a href="/#/room/#{{ stand.track_slug }}:fosdem.org">
                         <div class="dark-panel button">Join</div>
                     </a>
                     </div>
@@ -385,4 +388,5 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 </div>

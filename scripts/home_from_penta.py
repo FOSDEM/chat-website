@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 from datetime import date
 from jinja2 import Environment, PackageLoader, select_autoescape
-import requests
+from rapidfuzz import fuzz
+from track_parser import get_track_list
 import xml.etree.ElementTree as ET
+import json
+import requests
 
 class Room:
     """
     A generic room.
     """
-    def __init__(self, title, room_name, raw_room, track_slug=None, days=()):
+    def __init__(self, title, room_name, url, raw_room=None, track_slug=None, days=()):
         self.title = title
         self.room_name = room_name
         self.raw_room_name = raw_room
+        self.url = url
         self.days = [d.lower() for d in days]
         self.slug = track_slug
 
@@ -59,42 +63,46 @@ def convert_to_human_date(d):
     else:
         return f"{str(d.day)}th"
 
-def load_from_penta():
+
+def get_track_title_and_slug_from_list(track_list, schedule_track_name):
+    # This determines the likely slug based on the track name. Admittedly,
+    # it's a bit of a hack but it works well enough.
+    best = None
+    best_ratio = 0
+    for name, url in track_list.items():
+        ratio = fuzz.ratio(schedule_track_name, name)
+        if ratio > best_ratio:
+            best_ratio = ratio
+            # extract '{name}' from /20XX/schedule/track/{name}/
+            best = name, url
+    return best
+
+def load_from_penta(track_list):
+    # Load the data from the schedule.
     req = requests.get('https://fosdem.org/2024/schedule/xml')
     if req.status_code != 200:
         raise "Status code was not 200"
-    xml = req.text
-    root = ET.fromstring(xml)
+
+    root = ET.fromstring(req.text)
     conference = root.find("conference")
     days = root.findall("day")
 
-
     schedule_tracks = {}
-    schedule_rooms = {}
     for track in root.find("tracks").findall("track"):
+        # For each track, store the set of rooms it's in.
+        title, url = get_track_title_and_slug_from_list(track_list, track.text)
         schedule_tracks[track.text] = {
-            "rooms": set()
+            "days": set(),
+            "title": title,
+            "url": url,
         }
 
     for day in days:
         day_name = date.fromisoformat(day.get("date")).strftime("%A").lower()
         for room in day.findall("room"):
-            slug = room.get("slug")
-            room_name = room.get("name")
-            schedule_room = schedule_rooms.get(slug)
-            if schedule_room is None:
-                schedule_room = {
-                    "slug": slug,
-                    "title": room_name,
-                    "conference_room": room_name,
-                    "events_by_day": {
-
-                    }
-                }
-                schedule_rooms[slug] = schedule_room
             for event in room.findall("event"):
-                schedule_room["events_by_day"][day_name] = True
-                schedule_tracks[event.find("track").text]["rooms"].add(room.get("name"))
+                track_name = event.find("track").text
+                schedule_tracks[track_name]["days"].add(day_name)
         
     start = date.fromisoformat(conference.find("start").text)
     end = date.fromisoformat(conference.find("end").text)
@@ -103,26 +111,10 @@ def load_from_penta():
 
     schedule = {
         "tracks": schedule_tracks,
-        "rooms": schedule_rooms,
         "year": start.strftime("%Y"),
         "dates": dates
     }
-    print (schedule)
     return schedule
-
-
-def tracks_by_rooms(schedule):
-    """
-    Order tracks by rooms
-    :param schedule:
-    :return:
-    """
-    tracks_by_room = {}
-    for track_name, track in schedule['tracks'].items():
-        for room_name in track['rooms']:
-            # Digital editions have one room per track - I hope.
-            tracks_by_room[room_name] = track
-    return tracks_by_room
 
 
 def track_title_and_slug_from_penta(tracks, room_slug):
@@ -137,7 +129,7 @@ def track_title_and_slug_from_penta(tracks, room_slug):
     return None, None
 
 
-def schedule_from_penta(schedule, tracks):
+def schedule_from_penta(tracks):
     """
     Return a schedule from Pentabarf data
     :param schedule
@@ -151,44 +143,43 @@ def schedule_from_penta(schedule, tracks):
         'stands': []
     }
 
-    # Rooms are in ... .rooms
-    for room_name, room in schedule['rooms'].items():
-        if room['slug'].lower() == 'mtest':
-            continue
-        if room_name[0].lower() == 'k' or room_name[0].lower() == 'm':
+    for track_name, track in tracks.items():
+        # extract '{name}' from /20XX/schedule/track/{name}/
+        slug = track["url"][21:-1]
+
+        # Assuming these are the main track rooms.
+        if "main track" in track["title"].lower():
             # Main track
             t = MainTrack(
-                title=room['title'],
-                room_name=room['conference_room'][2:],
-                raw_room=room['slug']
+                title=track['title'],
+                room_name=track_name,
+                days=track['days'],
+                url=track['url'],
+                track_slug=slug,
             )
             if t.room_name.lower() == 'fosdem':
                 t.room_name = 'fosdem-keynotes'
-        elif room_name[0].lower() == 'd':
+        elif "devroom" in track["title"].lower():
             # Devroom
             t = DevRoom(
-                title=room['title'],
-                room_name='{0}-devroom'.format(room['conference_room'][2:]),
-                raw_room=room['slug']
+                title=track['title'],
+                room_name=track_name,
+                days=track['days'],
+                url=track['url'],
+                track_slug=slug,
             )
-        elif room_name[0].lower() == 's':
-            # Stand
-            t = Stand(
-                title=room['title'],
-                room_name='{0}-stand'.format(room['conference_room'][2:]),
-                raw_room=room['slug']
-            )
+        # Not currently used.
+        # elif identifier == 's':
+        #     # Stand
+        #     t = Stand(
+        #         title=track['title'],
+        #         room_name=room_name,
+        #         raw_room=track['slug'],
+        #         track_slug=track['slug']
+        #     )
         else:
             continue
 
-        # Stands are always on the schedule
-        if t.type != 'stands':
-            if room['events_by_day']['saturday']:
-                t.days.append('saturday')
-            if room['events_by_day']['sunday']:
-                t.days.append('sunday')
-        # Fancy title
-        t.title, t.slug = track_title_and_slug_from_penta(tracks, t.raw_room_name)
 
         # Add to schedule
         if not t.title:
@@ -220,8 +211,10 @@ def page_from_my_schedule(my_schedule, year, dates):
             main_tracks=main_tracks_today,
             stands=my_schedule['stands']
         )
-        with open('out/{0}.html'.format(day), 'w') as fh:
+        filename = f'out/{day}.html'
+        with open(filename, 'w') as fh:
             fh.write(rendered)
+            print(f'{filename} built with {len(main_tracks_today)} main tracks and {len(devrooms_today)} devrooms')
 
     return 0
 
@@ -230,17 +223,17 @@ def main():
     """
     From the penta export at fosdem.org, generate a home page
     for chat.fosdem.org for Saturday and Sunday.
-    Requires Jinja2 and pyyaml to function.
-
-    TODO
-    - parameter for year
-    - parameter for date
     """
-    schedule = load_from_penta()
-    tracks = tracks_by_rooms(schedule)
+    # Get the list of tracks (and their URLs) from the FOSDEM website.
+    track_list = get_track_list()
 
-    fosdem_schedule = schedule_from_penta(schedule, tracks)
+    # Load the schedule from penta and figure out which tracks happen on which days.
+    schedule = load_from_penta(track_list)
 
+    # Sort into main tracks, devrooms, stands etc
+    fosdem_schedule = schedule_from_penta(schedule["tracks"])
+
+    # And finally generate the pages
     return page_from_my_schedule(fosdem_schedule, schedule["year"], schedule["dates"])
 
 
