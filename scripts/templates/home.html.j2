@@ -256,7 +256,9 @@
         <a class="mx_AccessibleButton mx_AccessibleButton_hasKind mx_AccessibleButton_kind_primary" href="/#/room/#fosdem{{ fosdem_year }}:fosdem.org">FOSDEM {{ fosdem_year }} Conference Space</a>
         <a class="dark-panel button btn-main" href="#main_tracks">To the main tracks</a>
         <a class="dark-panel button btn-main" href="#devrooms">To the devrooms</a>
+    {% if (stands | length) > 0 %}
         <a class="dark-panel button btn-main" href="#stands">To the stands</a>
+    {% endif %}
     </div>
     <!-- Social -->
     <div class="rooms">
@@ -359,6 +361,7 @@
             {% endfor %}
         </div>
     </div>
+    {% if (stands | length) > 0 %}
     <!-- Stands -->
     <div class="rooms">
         <div class="dark-panel room_title">
@@ -385,4 +388,5 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 </div>

@@ -66,6 +66,8 @@ def load_track_list():
         return json.loads(f.read())
 
 def get_track_title_and_slug_from_list(track_list, schedule_track_name):
+    # This determines the likely slug based on the track name. Admittedly,
+    # it's a bit of a hack but it works well enough.
     best = None
     best_ratio = 0
     for name, url in track_list.items():
@@ -74,10 +76,10 @@ def get_track_title_and_slug_from_list(track_list, schedule_track_name):
             best_ratio = ratio
             # extract '{name}' from /20XX/schedule/track/{name}/
             best = name, url[21:-1]
-    print(best)
     return best
 
 def load_from_penta(track_list):
+    # Load the data from the schedule.
     req = requests.get('https://fosdem.org/2024/schedule/xml')
     if req.status_code != 200:
         raise "Status code was not 200"
@@ -89,8 +91,8 @@ def load_from_penta(track_list):
     schedule_tracks = {}
     schedule_rooms = {}
     for track in root.find("tracks").findall("track"):
+        # For each track, store the set of rooms it's in.
         title, slug = get_track_title_and_slug_from_list(track_list, track.text)
-        print(title, slug)
         schedule_tracks[track.text] = {
             "rooms": set(),
             "title": title,
@@ -172,45 +174,46 @@ def schedule_from_penta(schedule, tracks):
         'stands': []
     }
 
-    # Rooms are in ... .rooms
-    for room_name, room in schedule['rooms'].items():
-        identifier = room_name[0].lower()
-        if room['slug'].lower() == 'mtest':
+    for room_name, track in tracks.items():
+        identifier = room_name[0]
+        if track['slug'].lower() == 'mtest':
             continue
-        if identifier == 'k' or identifier == 'm':
+        # Assuming these are the main track rooms.
+        if room_name == 'janson' or room_name == 'k1105':
             # Main track
             t = MainTrack(
-                title=room['title'],
-                room_name=room['conference_room'][2:],
-                raw_room=room['slug']
+                title=track['title'],
+                room_name=room_name,
+                raw_room=track['slug'],
+                track_slug=track['slug']
             )
             if t.room_name.lower() == 'fosdem':
                 t.room_name = 'fosdem-keynotes'
-        elif identifier == 'd':
+        elif "devroom" in track["title"].lower():
             # Devroom
             t = DevRoom(
-                title=room['title'],
-                room_name='{0}-devroom'.format(room['conference_room'][2:]),
-                raw_room=room['slug']
+                title=track['title'],
+                room_name=room_name,
+                raw_room=track['slug'],
+                track_slug=track['slug']
             )
         elif identifier == 's':
             # Stand
             t = Stand(
-                title=room['title'],
-                room_name='{0}-stand'.format(room['conference_room'][2:]),
-                raw_room=room['slug']
+                title=track['title'],
+                room_name=room_name,
+                raw_room=track['slug'],
+                track_slug=track['slug']
             )
         else:
             continue
 
         # Stands are always on the schedule
         if t.type != 'stands':
-            if room['events_by_day']['saturday']:
+            # if room['events_by_day']['saturday']:
                 t.days.append('saturday')
-            if room['events_by_day']['sunday']:
+            # if room['events_by_day']['sunday']:
                 t.days.append('sunday')
-        # Fancy title
-        t.title, t.slug = track_title_and_slug_from_penta(tracks, t.raw_room_name)
         # Add to schedule
         if not t.title:
             continue
