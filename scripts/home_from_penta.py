@@ -209,6 +209,7 @@ def page_from_my_schedule(my_schedule, year, dates):
             fosdem_dates=dates,
             devrooms=devrooms_today,
             main_tracks=main_tracks_today,
+            day_name=day[0].upper() + day[1:],
             stands=my_schedule['stands']
         )
         filename = f'out/{day}.html'
