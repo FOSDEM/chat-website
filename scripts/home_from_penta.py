@@ -87,6 +87,11 @@ def load_from_penta(track_list):
     conference = root.find("conference")
     days = root.findall("day")
 
+    start = date.fromisoformat(conference.find("start").text)
+    end = date.fromisoformat(conference.find("end").text)
+    dates = start.strftime("%B ") + convert_to_human_date(start) + " & " + convert_to_human_date(end)
+    year = start.strftime("%Y")
+
     schedule_tracks = {}
     for track in root.find("tracks").findall("track"):
         # For each track, store the set of rooms it's in.
@@ -103,15 +108,15 @@ def load_from_penta(track_list):
             for event in room.findall("event"):
                 track_name = event.find("track").text
                 schedule_tracks[track_name]["days"].add(day_name)
+                # This is how we calculate matrix room names
+                matrix_room_name = room.get("name").lower().replace(" (", "_").replace(")", "_").replace(" ", "_")
+                schedule_tracks[track_name]["slug"] = f"{year}-{matrix_room_name}" 
         
-    start = date.fromisoformat(conference.find("start").text)
-    end = date.fromisoformat(conference.find("end").text)
 
-    dates = start.strftime("%B ") + convert_to_human_date(start) + " & " + convert_to_human_date(end)
 
     schedule = {
         "tracks": schedule_tracks,
-        "year": start.strftime("%Y"),
+        "year": year,
         "dates": dates
     }
     return schedule
@@ -145,7 +150,6 @@ def schedule_from_penta(tracks):
 
     for track_name, track in tracks.items():
         # extract '{name}' from /20XX/schedule/track/{name}/
-        slug = track["url"][21:-1]
 
         # Assuming these are the main track rooms.
         if "main track" in track["title"].lower():
@@ -155,7 +159,7 @@ def schedule_from_penta(tracks):
                 room_name=track_name,
                 days=track['days'],
                 url=track['url'],
-                track_slug=slug,
+                track_slug=track['slug'],
             )
             if t.room_name.lower() == 'fosdem':
                 t.room_name = 'fosdem-keynotes'
@@ -166,7 +170,7 @@ def schedule_from_penta(tracks):
                 room_name=track_name,
                 days=track['days'],
                 url=track['url'],
-                track_slug=slug,
+                track_slug=track['slug'],
             )
         # Not currently used.
         # elif identifier == 's':
