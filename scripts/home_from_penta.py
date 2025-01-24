@@ -109,9 +109,9 @@ def load_from_penta(track_list):
                 track_name = event.find("track").text
                 schedule_tracks[track_name]["days"].add(day_name)
                 # This is how we calculate matrix room names
-                matrix_room_name = room.get("name").lower().replace(" (", "_").replace(")", "_").replace(" ", "_")
-                schedule_tracks[track_name]["slug"] = f"{year}-{matrix_room_name}" 
-        
+                matrix_room_name = room.get("track").lower().replace(" (", "_").replace(")", "_").replace(" ", "_")
+                schedule_tracks[track_name]["slug"] = f"{year}-{matrix_room_name}"
+
 
 
     schedule = {
