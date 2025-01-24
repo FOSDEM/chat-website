@@ -79,7 +79,7 @@ def get_track_title_and_slug_from_list(track_list, schedule_track_name):
 
 def load_from_penta(track_list):
     # Load the data from the schedule.
-    req = requests.get('https://fosdem.org/2024/schedule/xml')
+    req = requests.get('https://fosdem.org/2025/schedule/xml')
     if req.status_code != 200:
         raise "Status code was not 200"
 
