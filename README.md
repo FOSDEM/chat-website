@@ -21,5 +21,10 @@ If you use your own local export, copy it to `scripts/pentabarf.yaml`.
 Execute `scripts/home_from_penta.py`. The generated files will be in
 `scripts/out`.
 
+#### A note on `banner.svg`
+
+Remember to strip out all leading elements from the file, such as `<?xml...>` so that the file begins with
+`<svg>`. It makes browsers happy.
+
 ## License
 [MIT license](LICENSE).
