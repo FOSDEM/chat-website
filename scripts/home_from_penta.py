@@ -95,8 +95,10 @@ def load_from_penta(track_list):
     schedule_tracks = {}
     for track in root.find("tracks").findall("track"):
         # For each track, store the set of rooms it's in.
-        title, url = get_track_title_and_slug_from_list(track_list, track.text)
-        schedule_tracks[track.text] = {
+        slug = track.get("slug")
+        title = track.text
+        url = track_list.get(title, None)
+        schedule_tracks[slug] = {
             "days": set(),
             "title": title,
             "url": url,
@@ -106,12 +108,21 @@ def load_from_penta(track_list):
         day_name = date.fromisoformat(day.get("date")).strftime("%A").lower()
         for room in day.findall("room"):
             for event in room.findall("event"):
-                track_name = event.find("track").text
-                schedule_tracks[track_name]["days"].add(day_name)
-                # This is how we calculate matrix room names
-                matrix_room_name = room.get("track").lower().replace(" (", "_").replace(")", "_").replace(" ", "_")
-                schedule_tracks[track_name]["slug"] = f"{year}-{matrix_room_name}"
+                track_element = event.find("track")
+                type_element = event.find("type")
 
+                if track_element is not None and type_element is not None:
+                    track_slug = track_element.get("slug")
+                    event_type = type_element.text.lower()
+
+                    if track_slug in schedule_tracks:
+                        schedule_tracks[track_slug]["days"].add(day_name)
+                        schedule_tracks[track_slug]["type"] = event_type
+                        matrix_room_name = f"{year}-{track_slug.lower().replace(' (', '_').replace(')', '_').replace(' ', '_')}"
+
+                        if track_slug in schedule_tracks:
+                            schedule_tracks[track_slug]["days"].add(day_name)
+                            schedule_tracks[track_slug]["slug"] = matrix_room_name
 
 
     schedule = {
@@ -148,29 +159,28 @@ def schedule_from_penta(tracks):
         'stands': []
     }
 
-    for track_name, track in tracks.items():
+    for track_slug, track in tracks.items():
+        track_type = track.get("type", "")
+        #print(f"Track: {track_slug}, Days: {track['days']}")
         # extract '{name}' from /20XX/schedule/track/{name}/
 
         # Assuming these are the main track rooms.
-        if "main track" in track["title"].lower():
-            # Main track
+        if track_type in ["main_track","keynote","maintrack"]:
             t = MainTrack(
                 title=track['title'],
-                room_name=track_name,
+                room_name=track_slug,
                 days=track['days'],
                 url=track['url'],
-                track_slug=track['slug'],
+                track_slug=track_slug,
             )
-            if t.room_name.lower() == 'fosdem':
-                t.room_name = 'fosdem-keynotes'
-        elif "devroom" in track["title"].lower():
-            # Devroom
+            my_schedule['main_tracks'].append(t)
+        elif track_type == "devroom":
             t = DevRoom(
                 title=track['title'],
-                room_name=track_name,
+                room_name=track_slug,
                 days=track['days'],
                 url=track['url'],
-                track_slug=track['slug'],
+                track_slug=track_slug,
             )
         # Not currently used.
         # elif identifier == 's':
@@ -219,10 +229,8 @@ def page_from_my_schedule(my_schedule, year, dates):
         filename = f'out/{day}.html'
         with open(filename, 'w') as fh:
             fh.write(rendered)
-            print(f'{filename} built with {len(main_tracks_today)} main tracks and {len(devrooms_today)} devrooms')
 
     return 0
-
 
 def main():
     """
@@ -235,11 +243,25 @@ def main():
     # Load the schedule from penta and figure out which tracks happen on which days.
     schedule = load_from_penta(track_list)
 
+    # print all tracks with type and day
+    print("~~~ pulling data ~~~")
+    for slug, track in schedule["tracks"].items():
+        print(f"Slug: {slug}, Title: {track['title']}, Type: {track.get('type', 'unknown')}, Days: {track['days']}")
+
     # Sort into main tracks, devrooms, stands etc
     fosdem_schedule = schedule_from_penta(schedule["tracks"])
 
+    # Debug-Ausgabe: keynote und Main Tracks nach Sortierung
+    print("~~~ sorting data from the FOSDEM schedule ~~~")
+    print(f"Main Tracks: {[t.title for t in fosdem_schedule['main_tracks']]}")
+    print(f"Devrooms: {[t.title for t in fosdem_schedule['devrooms']]}")
+
     # And finally generate the pages
-    return page_from_my_schedule(fosdem_schedule, schedule["year"], schedule["dates"])
+    result = page_from_my_schedule(fosdem_schedule, schedule["year"], schedule["dates"])
+
+    #Abschlussmeldung
+    print("Seiten erfolgreich generiert!")
+    return result
 
 
 if __name__ == '__main__':
