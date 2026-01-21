@@ -4,7 +4,6 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from rapidfuzz import fuzz
 from track_parser import get_track_list
 import xml.etree.ElementTree as ET
-import json
 import requests
 
 class Room:

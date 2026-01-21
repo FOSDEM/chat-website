@@ -1,5 +1,4 @@
 import requests
-import json
 from html.parser import HTMLParser
 
 class FOSDEMTrackParser(HTMLParser):
