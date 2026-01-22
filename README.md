@@ -10,13 +10,8 @@ The files are in `scripts/out` (one for Saturday, one for Sunday).
 _See requirements.txt_, in short:
  * Python 3
  * Jinja2
- * Pyyaml
 
 ### Generating the files
-To generate them yourself, follow the instructions on [the FOSDEM website](https://github.com/FOSDEM/website#exporting-from-fosdem-pentabarf)
-to generate a local export of the Pentabarf database (only available
-to FOSDEM staff), or use the provided (mostly current for 2022) `pentabarf.yaml` file.
-If you use your own local export, copy it to `scripts/pentabarf.yaml`.
 
 Execute `scripts/home_from_penta.py`. The generated files will be in
 `scripts/out`.

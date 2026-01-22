@@ -1,5 +1,4 @@
 import requests
-import json
 from html.parser import HTMLParser
 
 class FOSDEMTrackParser(HTMLParser):
@@ -8,7 +7,7 @@ class FOSDEMTrackParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == 'a':
             href = next((x for x in attrs if x[0] == "href"), None)
-            if href and href[1].startswith('/2025/schedule/track/'):
+            if href and "/schedule/track" in href[1]:
                 self.current_href = href[1]
 
     def handle_data(self, data):
@@ -19,7 +18,7 @@ class FOSDEMTrackParser(HTMLParser):
             self.track_list[data] = self.current_href
             self.current_href = None
 
-URL = "https://fosdem.org/2025/schedule/"
+URL = "https://fosdem.org/schedule/"
 
 def get_track_list():
     """
