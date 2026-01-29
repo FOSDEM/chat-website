@@ -172,7 +172,6 @@ def schedule_from_penta(tracks):
                 url=track['url'],
                 track_slug=track_slug,
             )
-            my_schedule['main_tracks'].append(t)
         elif track_type == "devroom":
             t = DevRoom(
                 title=track['title'],
